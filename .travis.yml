@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jackhsin/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true jackhsin/react-test npm test
+
+after_success:
+  - docker build -t jackhsin/multi-client ./client
+  - docker build -t jackhsin/multi-nginx ./nginx
+  - docker build -t jackhsin/multi-server ./server
+  - docker build -t jackhsin/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push jackhsin/multi-client
+  - docker push jackhsin/multi-nginx
+  - docker push jackhsin/multi-server
+  - docker push jackhsin/multi-worker
