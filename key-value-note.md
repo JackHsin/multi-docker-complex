@@ -1,0 +1,8 @@
+username: postgres
+passowrd: postgrespassword
+databasename: fibvalues
+
+IAM
+multi-docker-deployer
+AKIA2I4KCXIYHRVKNJWM 
+0vZEN8lgW3McSW3sNSsSZh13V3rRlzGQFxsLQD7u
