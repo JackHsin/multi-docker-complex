@@ -22,13 +22,13 @@ after_success:
   - docker push jackhsin/multi-worker
 
 deploy:
-  provider: 'elasticbeanstalk'
-  region: 'ap-northeast-1'
-  app: 'multi-docker-complex'
-  env: 'Multidockercomplex-env'
-  bucket_name: 'elasticbeanstalk-ap-northeast-1-706274834992'
-  bucket_path: 'docker-multi'
+  provider: elasticbeanstalk
+  region: ap-northeast-1
+  app: multi-docker-complex
+  env: Multidockercomplex-env
+  bucket_name: elasticbeanstalk-ap-northeast-1-706274834992
+  bucket_path: docker-multi
   on:
-    branch: 'master'
+    branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
